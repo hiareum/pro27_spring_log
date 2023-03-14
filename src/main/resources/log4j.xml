@@ -45,6 +45,7 @@
 			DEBUG - 개발 시 디버깅 용도로 사용한 메시지를 나타냅니다.
 			TRACE - DEBUG 레벨보다 상세한 로깅 정보를 출력하기 위해 도입된 레벨입니다.-상세내용
 		더 자세한 내용 • http://logging.apache.org/log4j/1.2/manual.html
+		gg
 		 -->
 		
 	</logger>

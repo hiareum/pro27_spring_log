@@ -69,7 +69,7 @@
 
 	<!-- Root Logger -->
 	<root>
-		<priority value="info" /> <!--warn  -->
+		<priority value="debug" /> <!--warn  -->
 		<appender-ref ref="console" />
 		<appender-ref ref="dailyFileAppender" />
 	</root>

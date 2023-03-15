@@ -1,0 +1,22 @@
+pro27http://localhost:8080/pro27/member/listMembers.do 실행시 log
+
+
+DEBUG: org.mybatis.spring.SqlSessionUtils - Creating a new SqlSession
+DEBUG: org.mybatis.spring.SqlSessionUtils - SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79709b8d] was not registered for synchronization because synchronization is not active
+DEBUG: org.springframework.jdbc.datasource.DataSourceUtils - Fetching JDBC Connection from DataSource
+DEBUG: org.apache.ibatis.datasource.pooled.PooledDataSource - Checked out connection 1223572525 from pool.
+DEBUG: org.mybatis.spring.transaction.SpringManagedTransaction - JDBC Connection [oracle.jdbc.driver.T4CConnection@48ee3c2d] will not be managed by Spring
+DEBUG: mapper.member.selectAllMemberList - ooo Using Connection [oracle.jdbc.driver.T4CConnection@48ee3c2d]
+DEBUG: mapper.member.selectAllMemberList - ==>  Preparing: select * from t_member order by joinDate desc 
+DEBUG: mapper.member.selectAllMemberList - ==> Parameters: 
+DEBUG: mapper.member.selectAllMemberList - <==    Columns: ID, NAME, EMAIL, JOINDATE, PWD
+DEBUG: mapper.member.selectAllMemberList - <==        Row: goeunjung, e³？i？？i？？, goeun@naver.com, 2023-03-15 11:09:51.0, 1004
+DEBUG: mapper.member.selectAllMemberList - <==        Row: hohoho, hohoho, hohoho, 2023-03-07 10:21:31.0, hohoho
+DEBUG: mapper.member.selectAllMemberList - <==        Row: abc, abc, abc, 2023-03-07 10:14:17.0, abc
+DEBUG: mapper.member.selectAllMemberList - <==        Row: joareum, 조아름, jar22@naver.com, 2023-02-15 09:45:57.0, 12345
+DEBUG: mapper.member.selectAllMemberList - <==        Row: hihihi, 홍길동, jojo@naver.com, 2023-02-03 10:18:59.0, 777
+DEBUG: mapper.member.selectAllMemberList - <==        Row: cha, 차범근, cha1234@naver.com, 2023-01-16 17:10:28.0, 1234
+DEBUG: org.mybatis.spring.transaction.SpringManagedTransaction - Committing JDBC Connection [oracle.jdbc.driver.T4CConnection@48ee3c2d]
+DEBUG: org.mybatis.spring.SqlSessionUtils - Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@79709b8d]
+DEBUG: org.springframework.jdbc.datasource.DataSourceUtils - Returning JDBC Connection to DataSource
+DEBUG: org.apache.ibatis.datasource.pooled.PooledDataSource - Returned connection 1223572525 to pool.

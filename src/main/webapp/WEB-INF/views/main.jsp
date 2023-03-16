@@ -15,7 +15,6 @@
   <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
-   <h1>WELCOME</h1>
-   
+   <h1><font size="30">WELCOME</br>회원관리 홈페이지</font></h1>
 </body>
 </html>

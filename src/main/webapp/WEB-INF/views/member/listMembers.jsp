@@ -12,11 +12,12 @@
 <head>
 <meta charset=UTF-8">
 <title>회원 정보 출력창</title>
+
 </head>
 <body>
-<table border="1"  align="center"  width="80%">
-    <tr align="center"   bgcolor="lightgreen">
-      <td ><b>아이디</b></td>
+<table  align="center"  width="90%">
+    <tr align="center"   bgcolor="#FFFF99">
+      <td><b>아이디</b></td>
       <td><b>비밀번호</b></td>
       <td><b>이름</b></td>
       <td><b>이메일</b></td>

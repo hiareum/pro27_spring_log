@@ -13,6 +13,9 @@
 <head>
   <meta charset="UTF-8">
 <title>로그인창</title>
+<style type="text/css">
+.login{background-color: #FFFF99;}
+</style>
 <c:choose>
 	<c:when test="${result=='loginFailed' }">
 	  <script>
@@ -26,10 +29,10 @@
 
 <body>
 <form name="frmLogin" method="post"  action="${contextPath}/member/login.do">
-   <table border="1"  width="80%" align="center" >
+   <table   width="90%" align="center" >
       <tr align="center">
-         <td>아이디</td>
-         <td>비밀번호</td>
+         <td class="login">아이디</td>
+         <td class="login">비밀번호</td>
       </tr>
       <tr align="center">
          <td>

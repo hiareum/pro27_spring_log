@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,20 +15,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.myspring.pro27.member.dao.MemberDAO;
 import com.myspring.pro27.member.dao.MemberDAOImpl;
 import com.myspring.pro27.member.service.MemberService;
 import com.myspring.pro27.member.vo.MemberVO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller(value = "memberController")
 public class MemberControllerImpl  implements  MemberController {
+	
+	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 
 	//@Autowired�쑝濡� �옄�룞�쑝濡� 二쇱엯 �깮�꽦�옄,�븘�뱶,�뀑�꽣硫붿꽌�뱶,硫붿꽌�뱶�꽕�젙�뿉 �쓽議댁꽦 二쇱엯
 	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private MemberVO memberVO;
+	
+	
 	
 
 //한글로바뀐주석 깃허브에 올린내용으로 바꾸기
@@ -39,8 +49,9 @@ public class MemberControllerImpl  implements  MemberController {
 	@Override
 	@RequestMapping(value = "/member/listMembers.do" , method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
-//		�뿬湲곗꽌 service濡� 媛��빞�븿
 		String viewName = getViewName(request);
+		logger.info("viewName:" +viewName);
+		logger.debug("viewName:" +viewName);
 		List membersList = memberService.listMembers();
 		ModelAndView mav = new ModelAndView(viewName);
 		mav.addObject("membersList", membersList);
@@ -49,9 +60,11 @@ public class MemberControllerImpl  implements  MemberController {
 	}
 	
 	@RequestMapping(value = "/member/*Form.do" , method = RequestMethod.GET)
-	public ModelAndView memberForm(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public ModelAndView memberForm(@RequestParam(value= "result", required=false) String result,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
+		logger.debug("viewName:" +viewName);
 		ModelAndView mav = new ModelAndView(viewName);
+		mav.addObject("result",result);
 		mav.setViewName(viewName);
 		return mav;
 	}
@@ -117,15 +130,6 @@ public class MemberControllerImpl  implements  MemberController {
 //		
 //	}
 	
-
-	
-
-	
-		
-		
-
-	
-	
 	
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
@@ -158,6 +162,36 @@ public class MemberControllerImpl  implements  MemberController {
 		}
 		return fileName;
 	}
+
+@Override
+@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
+public ModelAndView login(@ModelAttribute("member") MemberVO member,
+			              RedirectAttributes rAttr,
+	                       HttpServletRequest request, HttpServletResponse response) throws Exception {
+ModelAndView mav = new ModelAndView();
+memberVO = memberService.login(member);
+if(memberVO != null) {
+	    HttpSession session = request.getSession();
+	    session.setAttribute("member", memberVO);
+	    session.setAttribute("isLogOn", true);
+	    mav.setViewName("redirect:/member/listMembers.do");
+}else {
+	    rAttr.addAttribute("result","loginFailed");
+	    mav.setViewName("redirect:/member/loginForm.do");
+}
+return mav;
+}
+
+@Override
+@RequestMapping(value = "/member/logout.do", method =  RequestMethod.GET)
+public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	HttpSession session = request.getSession();
+	session.removeAttribute("member");
+	session.removeAttribute("isLogOn");
+	ModelAndView mav = new ModelAndView();
+	mav.setViewName("redirect:/member/listMembers.do");
+	return mav;
+}
 
 
 

@@ -15,11 +15,30 @@
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" /> <!-- jsp에서 사용될자바스크립트나 이미지파일경로 지정  -->
 
+<!-- jsp가 view일때는 아래 코드 -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<!-- <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
+	</beans:bean> -->
+	
+	<!--이젠 view대신  tiles를 사용하려면 작성해야한다 작성 후 tiles_member.xml에 화면단 작성 -->
+	 <beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<beans:property name="definitions">
+			<beans:list>
+				<beans:value>classpath:tiles/*.xml</beans:value>
+			</beans:list>
+		</beans:property>
+		<beans:property name="preparerFactoryClass"
+			          value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 	</beans:bean>
+	<!--tiles를 viewResolver로 설정  -->
+	<beans:bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView" />
+	</beans:bean>
+	
+	
 	
 	<context:component-scan base-package="com.myspring.pro27" />  <!--패키지와 애너테이션 지정 -->
 	

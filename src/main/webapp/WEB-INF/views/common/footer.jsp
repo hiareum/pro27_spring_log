@@ -9,13 +9,14 @@
   <title>하단 부분</title>
   <style>
     p {
-     font-size:20px;
+     font-size:15px;
       text-align:center;
+      margin: 0;
     }
   </style>
 </head>
 <body>
-<p> e-mail:admin@test.com</p> 
+<p> e-mail : j_ar2979@naver.com</p> 
 <p> 회사주소:서울시 강동구</p>
 <p>찾아오는 길:<a href="#">약도</a></p>
 

@@ -81,7 +81,6 @@ public class MemberControllerImpl  implements  MemberController {
 	
 	@Override
 	@RequestMapping(value = "/member/addMember.do" , method = RequestMethod.POST)
-	//�씤�꽣�럹�씠�뒪�뿉�룄 @ModelAttribute("member")MemberVO member,�엯�젰�빐以섏빞�븿
 	public ModelAndView addMember(@ModelAttribute("member")MemberVO member,HttpServletRequest request, HttpServletResponse response) throws Exception {
 		int result = 0;
 		result = memberService.addMember(member);

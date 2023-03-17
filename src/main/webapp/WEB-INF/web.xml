@@ -30,6 +30,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
+	<!-- 모든 요청에 인코딩!!따로 request.setCharacterEncoding("utf-8"); 입력할 필요 없음 -->
 	<filter>
 	<filter-name>encodingFilter</filter-name>
 	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -40,7 +41,7 @@
 	</init-param>
 	</filter>
 	
-	<!-- 모든 요청에 인코딩!!따로 request.setCharacterEncoding("utf-8"); 입력할 필요 없음 -->
+	
 	<filter-mapping>
 	<filter-name>encodingFilter</filter-name>
 	<url-pattern>/*</url-pattern>

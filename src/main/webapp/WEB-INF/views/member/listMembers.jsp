@@ -12,12 +12,17 @@
 <head>
 <meta charset=UTF-8">
 <title>회원 정보 출력창</title>
+<style type="text/css">
 
+#h1{font-size: 18px; background-color: #CCFFFF;}
+#show{padding-bottom:20px; }
+.tdtable{font-size: 13px;}
+</style>
 </head>
 <body>
-<table  align="center"  width="90%">
+<table id="show"  align="center"  width="90%" >
     <tr align="center"   bgcolor="#FFFF99">
-      <td><b>아이디</b></td>
+      <td ><b>아이디</b></td>
       <td><b>비밀번호</b></td>
       <td><b>이름</b></td>
       <td><b>이메일</b></td>
@@ -28,17 +33,22 @@
    
  <c:forEach var="member" items="${membersList}" >     
    <tr align="center">
-      <td>${member.id}</td>
-      <td>${member.pwd}</td>
-      <td>${member.name}</td>
-      <td>${member.email}</td>
-      <td>${member.joinDate}</td>
-      <td><a href="${contextPath}/member/removeMember.do?id=${member.id}">삭제하기</a></td>
-      <td><a href="${contextPath}/member/modMember.do?id=${member.id }">수정하기</a></td> 
+      <td class="tdtable">${member.id}</td>
+      <td class="tdtable">${member.pwd}</td>
+      <td class="tdtable">${member.name}</td>
+      <td class="tdtable">${member.email}</td>
+      <td class="tdtable">${member.joinDate}</td>
+      <td class="tdtable"><a href="${contextPath}/member/removeMember.do?id=${member.id}">삭제하기</a></td>
+      <td class="tdtable"><a href="${contextPath}/member/modMember.do?id=${member.id }">수정하기</a></td> 
       
     </tr>
   </c:forEach>   
 </table>
-<a  href="${contextPath}/member/memberForm.do"><h1 style="text-align:center">회원가입</h1></a>
+
+
+<a id="h1" href="${contextPath}/member/memberForm.do">회원가입</a>
+
+<!-- <h1 class="h1" style="text-align:center">회원가입</h1> -->
+
 </body>
 </html>

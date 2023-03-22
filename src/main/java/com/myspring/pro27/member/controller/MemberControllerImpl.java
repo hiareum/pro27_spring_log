@@ -30,7 +30,7 @@ public class MemberControllerImpl  implements  MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberControllerImpl.class);
 
-	//@Autowired�쑝濡� �옄�룞�쑝濡� 二쇱엯 �깮�꽦�옄,�븘�뱶,�뀑�꽣硫붿꽌�뱶,硫붿꽌�뱶�꽕�젙�뿉 �쓽議댁꽦 二쇱엯
+
 	@Autowired
 	private MemberService memberService;
 	@Autowired
